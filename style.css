@@ -7,7 +7,7 @@ body {
 
 /* 헤더 스타일 */
 header {
-  background: url('./header_image.jpg') no-repeat center / cover;
+  background: url('./image.jpg') no-repeat center / cover;
   padding: 60px 20px;
   text-align: center;
 }
