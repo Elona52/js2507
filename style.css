@@ -6,11 +6,20 @@ body {
 }
 
 /* 헤더 스타일 */
-header {
+header{
   background: url('./image.jpg') no-repeat center / cover;
-  padding: 60px 20px;
-  text-align: center;
 }
+  .img-container {
+  text-align: center;
+  padding: 60px 20px; /* 부모에 패딩 */
+}
+img {
+  display: inline-block;  /* 기본 값인 inline 상태 유지 */
+    width: 1100px;
+  height: 300px;
+  object-fit: cover;
+}
+
 
 header h1 {
   color: white;
@@ -22,10 +31,10 @@ header h1 {
 /* 표 스타일 */
 table {
   width: 80%;
-  margin: 30px auto;
+  margin: 0px auto;
   border-collapse: collapse;
   background-color: #e6f7ff;
-  box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
   border-radius: 10px;
   overflow: hidden;
 }
@@ -33,15 +42,15 @@ table {
 /* 표 헤더 스타일 */
 th {
   background-color: #b3e0ff;
-  padding: 15px;
-  font-size: 1.2em;
+  padding: 20px;
+  font-size: 1.5em;
   text-align: left;
 }
 
 /* 표 본문 셀 */
 td {
-  padding: 15px;
-  border-top: 1px solid #ccc;
+  padding: 8px;
+  border-top: 2px solid #ccc;
 }
 
 /* 링크 스타일 */
