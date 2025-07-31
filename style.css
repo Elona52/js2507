@@ -30,11 +30,11 @@ header h1 {
 
 /* 표 스타일 */
 table {
-  width: 80%;
+  width: 70%;
   margin: 0px auto;
   border-collapse: collapse;
   background-color: #e6f7ff;
-  box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 3px 2px 8px rgba(0,0,0,0.1);
   border-radius: 10px;
   overflow: hidden;
 }
@@ -49,8 +49,9 @@ th {
 
 /* 표 본문 셀 */
 td {
-  padding: 8px;
+  padding: 10px;
   border-top: 2px solid #ccc;
+  word-wrap: break-word; /* 텍스트 줄바꿈을 허용 */
 }
 
 /* 링크 스타일 */
