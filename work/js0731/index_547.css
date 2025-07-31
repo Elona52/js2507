@@ -1,0 +1,15 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100wh;
+}
+table, td{
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+}
+td{
+    padding: 10px;
+    font-size: 0.9em;
+}
