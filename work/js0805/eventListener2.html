@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>JavaScript addEventLister</h2>
+    <p>사이트 크기를 조절하면 이벤트가 작동됩니다.</p>
+    <p>id="result"</p>
+
+    <script>
+        window.addEventListener("resize", function () {
+            document.getElementById("demo").innerHTML = Math.random();
+        });
+    </script>
+
+</body>
+
+</html>
