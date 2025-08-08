@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //차 클래스
+        class Car{
+            constructor(name){
+                this.brand = name
+            }
+            present(){
+                return `브랜드 : ${this.brand}`
+            }
+        }
+        //모델 클래스
+        // class Model extends Car : Car의 기능확장
+        class Model extends Car{
+            constructor(name, mod){
+                super(name)
+                this.model = mod
+            }
+            show(){
+                return `${this.present} ${this.model}`
+            }
+        }
+        const myCar1 = new Model("현대", "소나타")
+        const myCar2 = new Mode2("기아", "K5")
+    </script>
+</body>
+</html>

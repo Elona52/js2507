@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+
+<body>
+
+    <div id="myRoot"></div>
+    <script type="text/babel">
+        import Garage from "./js/Garage.js"
+        // function Hello() {
+        //     return (<h1>안녕..</h1>)
+        // }
+
+        //차 컴포넌트 구성부
+        // function Car(pr) {
+
+        //차고 컴포넌트 구성부
+        // function Garage() {
+
+
+        const root = ReactDOM.createRoot(document.getElementById("myRoot"))
+        root.render(<Garage />)
+
+    </script>
+
+</body>
+
+</html>
