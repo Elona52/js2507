@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React를 웹에서 실행</title>
+
+    <!-- Jquery 와 같이 웹링크를 가져와야 사용할 수 있음 -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="mydiv"></div>
+    <script type="text/babel">
+        function Hello() {
+            return (<h1>안녕..</h1>)
+        }
+        const mydiv = document.getElementById("mydiv")
+        const root = ReactDOM.createRoot(mydiv)
+        root.render(<Hello />)
+
+    </script>
+</body>
+
+</html>
