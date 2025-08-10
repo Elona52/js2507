@@ -7,7 +7,7 @@ function addNumber() {
    myVar = sum
    var test = 5
    //   alert(`결과값: ${num1 + num2}`); 
-   console.log(`결과값: ${num1 + num2}`)
+   document.getElementById("output").innerHTML += `<p>결과값: ${num1 + num2}</p>`
 }
 
 
@@ -15,4 +15,4 @@ function addNumber() {
 //'그가 나의 이름을 불러주었을때, 나는 그에게로 가서 꽃이 되었다.'
 
 addNumber()
-console.log(`결과값2: ${myVar}`)
+document.getElementById("output").innerHTML += `<p>결과값2: ${myVar}</p>`

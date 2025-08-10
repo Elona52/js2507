@@ -14,8 +14,8 @@ function addNumber() {
 addNumber()
 
 //출력
-console.log(`전역변수: ${sum}`)
-console.log(`Automatically변수: ${result1}`)
-console.log(`지역변수: ${result2}`)
-console.log(`지역변수: ${result3}`)
+document.getElementById("output").innerHTML += `<p>전역변수: ${sum}</p>`
+document.getElementById("output").innerHTML += `<p>Automatically변수: ${result1}</p>`
+document.getElementById("output").innerHTML += `<p>지역변수: ${result2}</p>`
+document.getElementById("output").innerHTML += `<p>지역변수: ${result3}</p>`
 

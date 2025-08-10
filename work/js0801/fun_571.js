@@ -13,5 +13,6 @@ let result2 = addNumber(3, 4);
 let result3 = addNumber(7, 8);
 
 //출력
-document.writeln(`두 수를 더한 값 : ${result1}`);
-console.log(`두 수를 더한 값 : ${result2}`);
+document.getElementById("output").innerHTML += `<p>두 수를 더한 값 : ${result1}</p>`;
+document.getElementById("output").innerHTML += `<p>두 수를 더한 값 : ${result2}</p>`;
+document.getElementById("output").innerHTML += `<p>두 수를 더한 값 : ${result3}</p>`;

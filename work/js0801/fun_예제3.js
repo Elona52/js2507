@@ -3,6 +3,6 @@ function myHi(user) {
     return name
 }
 let result = myHi("이00")
-console.log(result)
+document.getElementById("output").innerHTML += `<p>결과1: ${result}</p>`;
 let result2 = myHi("김00")
-console.log(result2)
+document.getElementById("output").innerHTML += `<p>결과2: ${result2}</p>`;

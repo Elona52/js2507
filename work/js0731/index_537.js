@@ -5,4 +5,4 @@ sum +=2;
 sum +=3;
 sum +=4;
 sum +=5;
-document.writeln("1부터 5까지 더하면 ${sum}");
+document.getElementById("output").innerHTML += "<p>1부터 5까지 더하면 " + sum + "</p>"

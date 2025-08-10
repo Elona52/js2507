@@ -3,4 +3,4 @@ function multiple(a,b,c) {
 }
 
 let result = multiple(5,10,20);
-console.log(result);
+document.getElementById("output").innerHTML += `<p>결과: ${result}</p>`;

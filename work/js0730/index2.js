@@ -9,8 +9,8 @@ let timePM = 18
 // 가데이터로 테스트
 myhour = 7
 
-console.log(myDate)
-console.log(myhour)
+document.getElementById("output").innerHTML += "<p>현재 날짜: " + myDate + "</p>"
+document.getElementById("output").innerHTML += "<p>현재 시간: " + myhour + "시</p>"
 
 if(myhour < timeAM){
     greeting = "등원"
@@ -21,7 +21,7 @@ if(myhour < timeAM){
 else{
     greeting = "열공\n화이팅"
 }
-console.log(greeting)
+document.getElementById("output").innerHTML += "<p>인사말: " + greeting + "</p>"
 
 
 

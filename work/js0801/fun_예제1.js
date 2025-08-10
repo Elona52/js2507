@@ -5,4 +5,4 @@ function myfunction(p1, p2) {
 
 //함수 실행 구간
 let result = myfunction(4,3);
-console.log("결과는 : " + result)
+document.getElementById("output").innerHTML += `<p>결과는 : ${result}</p>`;

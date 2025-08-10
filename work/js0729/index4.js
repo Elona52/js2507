@@ -4,30 +4,30 @@ let result = 1
 let result2 = 1
 
 // +=
-console.log(result = result + num)
-console.log(result2 += num)
+document.getElementById("output").innerHTML += "<p>result = result + num: " + (result = result + num) + "</p>"
+document.getElementById("output").innerHTML += "<p>result2 += num: " + (result2 += num) + "</p>"
 
 // -=
 //두번설정할 수 없기 때문에 초기화해줘야함
 result = 6
 result2 = 6
-console.log(result = result - num)
-console.log(result2 -= num)
+document.getElementById("output").innerHTML += "<p>result = result - num: " + (result = result - num) + "</p>"
+document.getElementById("output").innerHTML += "<p>result2 -= num: " + (result2 -= num) + "</p>"
 
 // *=
 result = 3
 result2 = 3
-console.log(result = result * num)
-console.log(result2 *= num)
+document.getElementById("output").innerHTML += "<p>result = result * num: " + (result = result * num) + "</p>"
+document.getElementById("output").innerHTML += "<p>result2 *= num: " + (result2 *= num) + "</p>"
 
 // /=
 result = 20
 result2 = 20
-console.log(result = result / num)
-console.log(result2 /= num)
+document.getElementById("output").innerHTML += "<p>result = result / num: " + (result = result / num) + "</p>"
+document.getElementById("output").innerHTML += "<p>result2 /= num: " + (result2 /= num) + "</p>"
 
 // %=
 result = 12
 result2 = 12
-console.log(result = result % num)
-console.log(result2 %= num)
+document.getElementById("output").innerHTML += "<p>result = result % num: " + (result = result % num) + "</p>"
+document.getElementById("output").innerHTML += "<p>result2 %= num: " + (result2 %= num) + "</p>"

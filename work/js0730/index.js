@@ -10,8 +10,10 @@ for (let i = 0; i < cars.length; i++){
    // console.log(i);
    // console.log(cars[i])   
     mytext += cars[i] + "_"
-    console.log(cars[i])
+    document.getElementById("output").innerHTML += "<p>" + cars[i] + "</p>"
 }
+
+document.getElementById("output").innerHTML += "<p>연결된 문자열: " + mytext + "</p>"
 
 // ""+"BMW" = "BMW" : text += cars[0]
 // "BMW" + "볼보"= "BMW볼보" : text += cars[1] + "_"

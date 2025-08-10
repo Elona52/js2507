@@ -1,11 +1,10 @@
 let myTxt;
 let myRandom = Math.random()
 
-console.log(myRandom)
+document.getElementById("output").innerHTML += "<p>랜덤 값: " + myRandom + "</p>"
 if(myRandom < 0.5){
     myTxt = "0.5보다 작다"
 }else{
     myTxt = "0.5보다 작지않다"
 }
-document.getElementById("result").innerHTML 
-= `<h1>결과는 ${myTxt}</h1>`
+document.getElementById("output").innerHTML += "<p>결과: " + myTxt + "</p>"

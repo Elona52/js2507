@@ -10,5 +10,5 @@ else
     result = "3의 배수가 아닙니다"
 
 //출력부
-
-alert(result)
+document.getElementById("output").innerHTML += "<p>입력한 숫자: " + usernumber + "</p>"
+document.getElementById("output").innerHTML += "<p>결과: " + result + "</p>"
