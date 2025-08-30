@@ -1,6 +1,112 @@
 // 블로그 인터랙티브 기능
 document.addEventListener('DOMContentLoaded', function() {
     
+    // 클릭 히스토리를 저장하는 배열
+    let clickHistory = [];
+    
+    // 히스토리를 로컬 스토리지에서 불러오기
+    const savedHistory = localStorage.getItem('clickHistory');
+    if (savedHistory) {
+        clickHistory = JSON.parse(savedHistory);
+    }
+    
+    // 히스토리를 로컬 스토리지에 저장하는 함수
+    function saveHistory() {
+        localStorage.setItem('clickHistory', JSON.stringify(clickHistory));
+    }
+    
+    // 히스토리에 항목 추가하는 함수
+    function addToHistory(id, name, type) {
+        // 기존 항목이 있으면 제거
+        const existingIndex = clickHistory.findIndex(item => item.id === id);
+        if (existingIndex !== -1) {
+            clickHistory.splice(existingIndex, 1);
+        }
+        
+        // 새 항목을 맨 앞에 추가
+        clickHistory.unshift({
+            id: id,
+            name: name,
+            type: type,
+            timestamp: new Date().toISOString()
+        });
+        
+        // 최대 5개까지만 유지
+        if (clickHistory.length > 5) {
+            clickHistory = clickHistory.slice(0, 5);
+        }
+        
+        // 로컬 스토리지에 저장
+        saveHistory();
+        
+        // 최근 학습 섹션 업데이트
+        updateRecentPosts();
+    }
+    
+    // 날짜 포맷팅 함수
+    function formatDate(timestamp) {
+        const now = new Date();
+        const date = new Date(timestamp);
+        const diffTime = now - date;
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+        
+        if (diffDays === 0) {
+            return '오늘';
+        } else if (diffDays === 1) {
+            return '어제';
+        } else if (diffDays < 7) {
+            return `${diffDays}일 전`;
+        } else {
+            return `${date.getMonth() + 1}/${date.getDate()}`;
+        }
+    }
+    
+    // 최근 학습 섹션 업데이트 함수
+    function updateRecentPosts() {
+        const recentPostsContainer = document.querySelector('.recent-posts');
+        if (!recentPostsContainer) return;
+        
+        // 기존 내용 제거
+        recentPostsContainer.innerHTML = '';
+        
+        // 히스토리가 없으면 기본 데이터 표시
+        const postsToShow = clickHistory.length > 0 ? clickHistory : [
+            { id: 'js-basic', name: 'JavaScript 기초', type: 'session', timestamp: new Date(Date.now() - 86400000).toISOString() },
+            { id: 'js-advanced', name: 'JavaScript 고급', type: 'session', timestamp: new Date(Date.now() - 172800000).toISOString() },
+            { id: 'js-project', name: 'JavaScript 프로젝트', type: 'project', timestamp: new Date(Date.now() - 259200000).toISOString() }
+        ];
+        
+        // 최근 학습 항목 생성
+        postsToShow.forEach(post => {
+            const postElement = document.createElement('a');
+            postElement.href = '#';
+            postElement.className = 'recent-post';
+            postElement.innerHTML = `
+                <span class="post-date">${formatDate(post.timestamp)}</span>
+                <span class="post-title">${post.name}</span>
+            `;
+            
+            // 클릭 이벤트 추가
+            postElement.addEventListener('click', (e) => {
+                e.preventDefault();
+                // 해당 항목으로 이동하는 로직
+                if (post.type === 'session') {
+                    const sessionItem = document.querySelector(`[data-id="${post.id}"]`);
+                    if (sessionItem) {
+                        sessionItem.click();
+                    }
+                } else if (post.type === 'project') {
+                    const projectCard = document.querySelector(`[data-id="${post.id}"]`);
+                    if (projectCard) {
+                        projectCard.click();
+                    }
+                }
+            });
+            
+            recentPostsContainer.appendChild(postElement);
+        });
+    }
+    
     // 네비게이션 활성화
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('section');
@@ -58,6 +164,10 @@ document.addEventListener('DOMContentLoaded', function() {
              e.preventDefault();
              const href = item.getAttribute('href');
              const title = item.querySelector('.item-title').textContent;
+             const id = item.getAttribute('data-id') || href;
+             
+             // 히스토리에 추가
+             addToHistory(id, title, 'sidebar');
              
              // 결과 표시
              showResult(href, title);
@@ -84,6 +194,10 @@ document.addEventListener('DOMContentLoaded', function() {
                  e.preventDefault();
                  const href = projectLink.getAttribute('href');
                  const title = card.querySelector('.project-title').textContent;
+                 const id = card.getAttribute('data-id') || href;
+                 
+                 // 히스토리에 추가
+                 addToHistory(id, title, 'project');
                  
                  // 결과 표시
                  showResult(href, title);
@@ -109,6 +223,10 @@ document.addEventListener('DOMContentLoaded', function() {
              e.preventDefault();
              const href = item.getAttribute('href');
              const title = item.querySelector('.session-name').textContent;
+             const id = item.getAttribute('data-id') || href;
+             
+             // 히스토리에 추가
+             addToHistory(id, title, 'session');
              
              // 결과 표시
              showResult(href, title);
@@ -271,14 +389,17 @@ document.addEventListener('DOMContentLoaded', function() {
     styleSheet.textContent = darkModeStyles;
     document.head.appendChild(styleSheet);
     
-         // 로딩 완료 메시지
-     console.log('🎉 블로그가 성공적으로 로드되었습니다!');
-     
-     // 성능 모니터링
-     window.addEventListener('load', () => {
-         const loadTime = performance.now();
-         console.log(`⚡ 페이지 로딩 시간: ${loadTime.toFixed(2)}ms`);
-     });
+             // 최근 학습 섹션 초기화
+    updateRecentPosts();
+    
+    // 로딩 완료 메시지
+    console.log('🎉 블로그가 성공적으로 로드되었습니다!');
+    
+    // 성능 모니터링
+    window.addEventListener('load', () => {
+        const loadTime = performance.now();
+        console.log(`⚡ 페이지 로딩 시간: ${loadTime.toFixed(2)}ms`);
+    });
  });
 
 // 결과 표시 함수
